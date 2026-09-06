@@ -21,7 +21,7 @@ dsh web
 固定版本安装：
 
 ```bash
-dsh plugin --profile web add @freecodego/dsh-harness-bundle@0.1.2-rc.1
+dsh plugin --profile web add @freecodego/dsh-harness-bundle@0.1.2-rc.1.5
 ```
 
 卸载插件：
@@ -32,25 +32,43 @@ dsh plugin --profile web remove @freecodego/dsh-harness-bundle
 
 ## 界面预览
 
-以下图片由代码生成，用于展示典型交互流程。示意图使用虚构项目和脱敏状态，不包含真实账号、凭据或私有源代码。
+以下为 FreeCodeGo 插件真实界面截图。截图中的账号、密钥和模型可用状态均由本地 Harness Host 管理，不公开私有源代码或凭据。
 
-### Agent 编写代码
+### 账号与提供商
 
-![FreeCodeGo Agent coding workspace](docs/images/agent-chat.svg)
+![账号与提供商设置](docs/images/screenshots/providers-and-accounts.png)
 
-### 模型与引擎设置
+神秘工作室、B.AI、OpenRouter 等 Provider 的账号状态、Key 配置和模型可用性统一在插件内管理。
 
-![FreeCodeGo model and account settings](docs/images/model-settings.svg)
+### 模型选择器
 
-### 多引擎协作评审
+![按 Provider 收纳的模型选择器](docs/images/screenshots/model-picker.png)
 
-![FreeCodeGo engineering team review](docs/images/engineering-team.svg)
+模型按 Provider 分组收纳，支持展开、免费/倍率标识、连接方式提示和当前会话模型切换。
+
+### 插件安全与更新
+
+![插件冲突保护和更新设置](docs/images/screenshots/plugin-safety-and-updates.png)
+
+内置第三方插件冲突保护、MCP/Skill/语音/会话能力开关，以及 `latest`、`next`、`canary` 更新通道。
+
+### 社区 MCP 市场
+
+![社区 MCP 市场](docs/images/screenshots/community-mcp-marketplace.png)
+
+可从 FreeCodeGo 社区页浏览 MCP、Skills 和插件目录，通过 Harness Host 一键添加。
+
+### 工程增强
+
+![工程增强设置](docs/images/screenshots/engineering-enhancement.png)
+
+工程 Skills、项目长期记忆、代码结构图、实施后验证与多角色方案审查均可按需启用。
 
 ## 下载地址
 
 - npm：[`@freecodego/dsh-harness-bundle`](https://www.npmjs.com/package/@freecodego/dsh-harness-bundle)
-- 当前预发布版本：[0.1.2-rc.1](https://www.npmjs.com/package/@freecodego/dsh-harness-bundle/v/0.1.2-rc.1)
-- npm tarball：`https://registry.npmjs.org/@freecodego/dsh-harness-bundle/-/dsh-harness-bundle-0.1.2-rc.1.tgz`
+- 当前预发布版本：[0.1.2-rc.1.5](https://www.npmjs.com/package/@freecodego/dsh-harness-bundle/v/0.1.2-rc.1.5)
+- npm tarball：`https://registry.npmjs.org/@freecodego/dsh-harness-bundle/-/dsh-harness-bundle-0.1.2-rc.1.5.tgz`
 
 ## 包含内容
 
@@ -327,7 +345,7 @@ FreeCodeGo 将 Harness 的协作能力扩展到三种 Agent 引擎：
 
 ## 版本与反馈
 
-当前版本为预发布版本 `0.1.2-rc.1`。模型目录、免费额度、Provider 健康状态和上游服务策略可能变化，实时目录优先于本文档中的固定回退列表。
+当前版本为预发布版本 `0.1.2-rc.1.5`，适配 Harness `0.1.2-rc.1`。模型目录、免费额度、Provider 健康状态和上游服务策略可能变化，实时目录优先于本文档中的固定回退列表。
 
 问题反馈请提交到本仓库的 [Issues](https://github.com/XiangSu-ce/dsh-freecodego-plugin/issues)。源码仓库保持私有，本仓库只存放发行说明和用户文档。
 
