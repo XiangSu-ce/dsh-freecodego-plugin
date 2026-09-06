@@ -1,34 +1,49 @@
 # FreeCodeGo Harness Plugin
 
-FreeCodeGo 是面向 DeepSeek Harness 的预编译扩展包，为 Harness 增加多提供商模型路由、账号管理、Codex/Claude 原生 Agent 引擎、工程协作工具和社区插件能力。
+FreeCodeGo 是面向 DeepSeek Harness 的预编译扩展，为 Harness 增加多提供商模型路由、账号管理、Codex/Claude 原生 Agent 引擎、工程协作工具和社区插件能力。
 
-本仓库只用于发行说明、安装文档和版本追踪，不包含 FreeCodeGo 私有源代码。实际运行文件发布在 npm 单包中。
+本仓库仅提供发行说明、用户文档和问题追踪，不包含 FreeCodeGo 私有源代码。运行文件以一个公开 npm 包发布：[`freecodego`](https://www.npmjs.com/package/freecodego)。
 
-## 一键安装
+## 安装
 
-当前预发布版本使用 `next` 标签：
+当前公开版本为 `freecodego@0.1.3-alpha.1`，仅兼容 DeepSeek Harness `0.1.3-alpha.1`。先安装 Harness CLI 与 pnpm：
 
-```bash
-dsh plugin --profile web add @freecodego/dsh-harness-bundle@next
+```powershell
+npm install --global @deepseek-ai/dsh pnpm
 ```
 
-安装完成后启动 Web profile：
+重新打开终端后，验证 `dsh` 已在 PATH 中：
 
-```bash
+```powershell
+dsh --version
+```
+
+然后安装 FreeCodeGo 到 Web Profile：
+
+```powershell
+dsh plugin --profile web add --save-exact freecodego@0.1.3-alpha.1
 dsh web
 ```
 
-固定版本安装：
+FreeCodeGo 发行版提供的 Harness CLI 或已适配的 Desktop 可使用 `@next` 作为自动选择入口：
 
-```bash
-dsh plugin --profile web add @freecodego/dsh-harness-bundle@0.1.2-rc.1.5
+```powershell
+dsh plugin --profile web add freecodego@next
 ```
+
+该入口会按运行中的 Harness 版本选择声明相同 `freecodego.harnessBaseline` 的插件版本。普通官方 Harness CLI 请优先使用上方的精确版本命令，避免 npm 标签在未来指向不兼容的 Harness 版本。
 
 卸载插件：
 
-```bash
-dsh plugin --profile web remove @freecodego/dsh-harness-bundle
+```powershell
+dsh plugin --profile web remove freecodego
 ```
+
+### Windows 与 Desktop
+
+- PowerShell 提示“无法将 dsh 识别为命令”表示 Harness CLI 尚未全局安装，或 npm 全局 bin 目录未加入 PATH。执行上面的 `npm install --global` 后重新打开终端。
+- Desktop 内置终端必须使用已经适配 Harness `0.1.3-alpha.1` 的 Desktop 版本。旧版 Desktop 内置的 Harness `0.1.2-alpha.1` 不能安装当前插件。
+- Web 与 Desktop 只有在使用相同 `DSH_HOME` 和相同 Profile 时才会读取同一份插件数据。
 
 ## 界面预览
 
@@ -66,9 +81,9 @@ dsh plugin --profile web remove @freecodego/dsh-harness-bundle
 
 ## 下载地址
 
-- npm：[`@freecodego/dsh-harness-bundle`](https://www.npmjs.com/package/@freecodego/dsh-harness-bundle)
-- 当前预发布版本：[0.1.2-rc.1.5](https://www.npmjs.com/package/@freecodego/dsh-harness-bundle/v/0.1.2-rc.1.5)
-- npm tarball：`https://registry.npmjs.org/@freecodego/dsh-harness-bundle/-/dsh-harness-bundle-0.1.2-rc.1.5.tgz`
+- npm：[`freecodego`](https://www.npmjs.com/package/freecodego)
+- 当前版本：[0.1.3-alpha.1](https://www.npmjs.com/package/freecodego/v/0.1.3-alpha.1)
+- npm tarball：`https://registry.npmjs.org/freecodego/-/freecodego-0.1.3-alpha.1.tgz`
 
 ## 包含内容
 
@@ -337,7 +352,7 @@ FreeCodeGo 将 Harness 的协作能力扩展到三种 Agent 引擎：
 
 ## 系统要求
 
-- DeepSeek Harness / `dsh` `0.1.2-rc.1` 或兼容版本
+- DeepSeek Harness / `dsh` `0.1.3-alpha.1`
 - Node.js `22.19.0` 或更高版本，或 Node.js `24.x`
 - Windows、macOS、Linux 的官方 Harness 运行环境
 - Codex/Claude 引擎需要额外安装对应的官方原生运行时
@@ -345,7 +360,7 @@ FreeCodeGo 将 Harness 的协作能力扩展到三种 Agent 引擎：
 
 ## 版本与反馈
 
-当前版本为预发布版本 `0.1.2-rc.1.5`，适配 Harness `0.1.2-rc.1`。模型目录、免费额度、Provider 健康状态和上游服务策略可能变化，实时目录优先于本文档中的固定回退列表。
+当前版本为预发布版本 `0.1.3-alpha.1`，适配 Harness `0.1.3-alpha.1`。模型目录、免费额度、Provider 健康状态和上游服务策略可能变化，实时目录优先于本文档中的固定回退列表。
 
 问题反馈请提交到本仓库的 [Issues](https://github.com/XiangSu-ce/dsh-freecodego-plugin/issues)。源码仓库保持私有，本仓库只存放发行说明和用户文档。
 
