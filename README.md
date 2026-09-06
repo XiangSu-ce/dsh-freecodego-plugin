@@ -73,6 +73,8 @@ pnpm dsh web
 - npm：[`freecodego`](https://www.npmjs.com/package/freecodego)
 - 当前版本：[0.1.3-alpha.1](https://www.npmjs.com/package/freecodego/v/0.1.3-alpha.1)
 - npm tarball：`https://registry.npmjs.org/freecodego/-/freecodego-0.1.3-alpha.1.tgz`
+- GitHub Release：[v0.1.3-alpha.1](https://github.com/XiangSu-ce/dsh-freecodego-plugin/releases/tag/v0.1.3-alpha.1)
+- GitHub Release 资产：[`freecodego-0.1.3-alpha.1.tgz`](https://github.com/XiangSu-ce/dsh-freecodego-plugin/releases/download/v0.1.3-alpha.1/freecodego-0.1.3-alpha.1.tgz)
 
 ## 包含内容
 
