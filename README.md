@@ -4,45 +4,34 @@ FreeCodeGo 是面向 DeepSeek Harness 的预编译扩展，为 Harness 增加多
 
 本仓库仅提供发行说明、用户文档和问题追踪，不包含 FreeCodeGo 私有源代码。运行文件以一个公开 npm 包发布：[`freecodego`](https://www.npmjs.com/package/freecodego)。
 
-## 安装
+## 当前安装状态
 
-当前公开版本为 `freecodego@0.1.3-alpha.1`，仅兼容 DeepSeek Harness `0.1.3-alpha.1`。先安装 Harness CLI 与 pnpm：
+当前公开插件为 `freecodego@0.1.3-alpha.1`，它仅兼容 DeepSeek Harness `0.1.3-alpha.1`。
 
-```powershell
-npm install --global @deepseek-ai/dsh pnpm
-```
+**目前没有可供普通用户直接安装的、与该版本兼容的 Harness CLI 或 Desktop 发行版。** npm 上现有的 `@deepseek-ai/dsh@0.1.2-rc.1` 是旧 CLI，不能安装或运行当前 FreeCodeGo 插件。请不要执行 `npm install --global @deepseek-ai/dsh` 后尝试安装本插件。
 
-重新打开终端后，验证 `dsh` 已在 PATH 中：
+普通用户应等待后续发布的 FreeCodeGo Desktop 或 Harness `0.1.3-alpha.1` CLI 发行版。届时会在本仓库提供对应下载地址和一条可直接执行的安装命令。
 
-```powershell
-dsh --version
-```
+### 开发者预览：从 Harness 源码构建
 
-然后安装 FreeCodeGo 到 Web Profile：
+开发者可从 [DeepSeek Harness 源码仓库](https://github.com/deepseek-ai/deepseek-harness) 构建与插件版本对应的 Harness，再安装 FreeCodeGo：
 
 ```powershell
-dsh plugin --profile web add --save-exact freecodego@0.1.3-alpha.1
-dsh web
+git clone --branch dsh-v0.1.3-alpha.1 https://github.com/deepseek-ai/deepseek-harness.git
+cd deepseek-harness
+corepack enable
+pnpm install
+pnpm run build
+pnpm dsh plugin --profile web add --save-exact freecodego@0.1.3-alpha.1
+pnpm dsh web
 ```
 
-FreeCodeGo 发行版提供的 Harness CLI 或已适配的 Desktop 可使用 `@next` 作为自动选择入口：
+此流程面向开发者，要求本机具备 Node.js `22.19.0` 或更高版本以及 pnpm。源码构建后的 `pnpm dsh` 是项目本地 CLI，不需要、也不应依赖旧 npm CLI。
 
-```powershell
-dsh plugin --profile web add freecodego@next
-```
+### Desktop 兼容性
 
-该入口会按运行中的 Harness 版本选择声明相同 `freecodego.harnessBaseline` 的插件版本。普通官方 Harness CLI 请优先使用上方的精确版本命令，避免 npm 标签在未来指向不兼容的 Harness 版本。
-
-卸载插件：
-
-```powershell
-dsh plugin --profile web remove freecodego
-```
-
-### Windows 与 Desktop
-
-- PowerShell 提示“无法将 dsh 识别为命令”表示 Harness CLI 尚未全局安装，或 npm 全局 bin 目录未加入 PATH。执行上面的 `npm install --global` 后重新打开终端。
-- Desktop 内置终端必须使用已经适配 Harness `0.1.3-alpha.1` 的 Desktop 版本。旧版 Desktop 内置的 Harness `0.1.2-alpha.1` 不能安装当前插件。
+- 已发布的旧 Desktop 内置 Harness `0.1.2-alpha.1`，不能安装当前插件。
+- 只有未来已明确标注支持 Harness `0.1.3-alpha.1` 的 Desktop 才能安装 `freecodego@0.1.3-alpha.1`。
 - Web 与 Desktop 只有在使用相同 `DSH_HOME` 和相同 Profile 时才会读取同一份插件数据。
 
 ## 界面预览
