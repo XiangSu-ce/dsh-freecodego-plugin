@@ -2,15 +2,15 @@
 
 FreeCodeGo 是面向 DeepSeek Harness 的预编译扩展，为 Harness 增加多提供商模型路由、账号管理、Codex/Claude 原生 Agent 引擎、工程协作工具和社区插件能力。
 
-本仓库仅提供发行说明、用户文档和问题追踪，不包含 FreeCodeGo 私有源代码。运行文件以一个公开 npm 包发布：[`freecodego`](https://www.npmjs.com/package/freecodego)。
+本仓库仅提供发行说明、用户文档和问题追踪，不包含 FreeCodeGo 私有源代码。当前可用运行包附在 GitHub Release 中；npm 同版本重新发布完成后再恢复 npm 安装方式。
 
 ## 当前安装状态
 
-当前公开插件为 `freecodego@0.1.3-alpha.1`，它仅兼容 DeepSeek Harness `0.1.3-alpha.1`。
+当前插件包为 `freecodego@0.1.3-alpha.1`，它仅兼容 DeepSeek Harness `0.1.3-alpha.1`。
 
 **目前没有可供普通用户直接安装的、与该版本兼容的 Harness CLI 或 Desktop 发行版。** npm 上现有的 `@deepseek-ai/dsh@0.1.2-rc.1` 是旧 CLI，不能安装或运行当前 FreeCodeGo 插件。请不要执行 `npm install --global @deepseek-ai/dsh` 后尝试安装本插件。
 
-普通用户应等待后续发布的 FreeCodeGo Desktop 或 Harness `0.1.3-alpha.1` CLI 发行版。届时会在本仓库提供对应下载地址和一条可直接执行的安装命令。
+普通用户目前请从本仓库的 [GitHub Release](https://github.com/XiangSu-ce/dsh-freecodego-plugin/releases/tag/v0.1.3-alpha.1) 下载修复后的 tarball。npm 包因同版本删除后的 24 小时保护暂时无法重新发布，当前不要执行 `npm install freecodego`。
 
 ### 开发者预览：从 Harness 源码构建
 
@@ -28,10 +28,17 @@ pnpm dsh web
 
 此流程面向开发者，要求本机具备 Node.js `22.19.0` 或更高版本以及 pnpm。源码构建后的 `pnpm dsh` 是项目本地 CLI，不需要、也不应依赖旧 npm CLI。
 
+构建好兼容的 Harness 后，也可以直接安装 GitHub Release tarball：
+
+```powershell
+pnpm dsh plugin --profile web add --save-exact https://github.com/XiangSu-ce/dsh-freecodego-plugin/releases/download/v0.1.3-alpha.1/freecodego-0.1.3-alpha.1.tgz
+pnpm dsh web
+```
+
 ### Desktop 兼容性
 
 - 已发布的旧 Desktop 内置 Harness `0.1.2-alpha.1`，不能安装当前插件。
-- 只有未来已明确标注支持 Harness `0.1.3-alpha.1` 的 Desktop 才能安装 `freecodego@0.1.3-alpha.1`。
+- 只有明确标注支持 Harness `0.1.3-alpha.1` 的 Desktop 才能安装该 Release tarball。
 - Web 与 Desktop 只有在使用相同 `DSH_HOME` 和相同 Profile 时才会读取同一份插件数据。
 
 ## 界面预览
@@ -70,15 +77,13 @@ pnpm dsh web
 
 ## 下载地址
 
-- npm：[`freecodego`](https://www.npmjs.com/package/freecodego)
-- 当前版本：[0.1.3-alpha.1](https://www.npmjs.com/package/freecodego/v/0.1.3-alpha.1)
-- npm tarball：`https://registry.npmjs.org/freecodego/-/freecodego-0.1.3-alpha.1.tgz`
-- GitHub Release：[v0.1.3-alpha.1](https://github.com/XiangSu-ce/dsh-freecodego-plugin/releases/tag/v0.1.3-alpha.1)
-- GitHub Release 资产：[`freecodego-0.1.3-alpha.1.tgz`](https://github.com/XiangSu-ce/dsh-freecodego-plugin/releases/download/v0.1.3-alpha.1/freecodego-0.1.3-alpha.1.tgz)
+- 当前可用来源：GitHub Release [`v0.1.3-alpha.1`](https://github.com/XiangSu-ce/dsh-freecodego-plugin/releases/tag/v0.1.3-alpha.1)
+- 直接下载：[`freecodego-0.1.3-alpha.1.tgz`](https://github.com/XiangSu-ce/dsh-freecodego-plugin/releases/download/v0.1.3-alpha.1/freecodego-0.1.3-alpha.1.tgz)
+- npm：暂不可用；同版本重新发布需等待 npm 删除保护窗口结束
 
 ## 包含内容
 
-单一 npm 成品包包含完整的 FreeCodeGo Harness 组成：
+单一发行包包含完整的 FreeCodeGo Harness 组成：
 
 - Host 插件和 Cordis profile patch
 - Web Client 设置界面
